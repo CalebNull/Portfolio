@@ -156,7 +156,7 @@
 @keyframes fade-in-up {
   from {
     opacity: 0;
-    filter: blur(50px);
+    filter: blur(25px);
     transform: translateY(-8px);
   }
   to {

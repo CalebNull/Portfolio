@@ -17,7 +17,7 @@ export function Hero() {
         <div className="absolute bottom-0 left-1/4 h-72 w-72 rounded-full bg-chart-2/25 blur-3xl" />
       </div>
 
-      {/* dd photos later */}
+      {/* add photos later */}
       <div className="relative h-48 w-48 animate-fade-in-up [animation-delay:225ms] sm:h-56 sm:w-56">
         <div className="absolute inset-0 translate-x-3 translate-y-3 rotate-6 rounded-2xl border border-border bg-secondary" />
         <div className="absolute inset-0 flex items-center justify-center overflow-hidden rounded-2xl border border-border bg-card shadow-2xl">
