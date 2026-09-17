@@ -30,6 +30,6 @@
     "**/*.mts",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts"
-  ],
+, "components/ProfileCard.jsx"  ],
   "exclude": ["node_modules"]
 }
