@@ -1,4 +1,3 @@
-import About from "@/components/about"
 import Contact from "@/components/contact"
 import { Hero } from "@/components/hero"
 import { MouseBlurTracker } from "@/components/ui/mouse-blur-tracker"
@@ -9,15 +8,13 @@ import Skills from "@/components/skills"
 
 export default function Page() {
   return (
-    <>
-      <MouseBlurTracker />
+    <div className="relative z-50">
       <SiteNav />
       <Hero />
-      <About />
       <Skills />
       <Projects />
       <Resume />
       <Contact />
-    </>
+    </div>
   )
 }

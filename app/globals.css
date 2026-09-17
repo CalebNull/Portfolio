@@ -187,3 +187,13 @@
   transform: scaleX(1);
   transform-origin: bottom center;
 }
+
+.mask-fade-bottom::before{
+  mask-image: linear-gradient(#000 50%, transparent);
+}
+
+.cont {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
