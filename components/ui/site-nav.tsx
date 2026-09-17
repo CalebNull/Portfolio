@@ -25,7 +25,7 @@ export function SiteNav() {
       >
         <div
           aria-hidden
-          className="absolute inset-0 -z-10 h-[95%] [mask-image:linear-gradient(to_bottom,black_0%,black_50%,transparent_100%)] backdrop-blur-2xl"
+          className="absolute inset-0 -z-10 h-[95%] mask-[linear-gradient(to_bottom,black_0%,black_50%,transparent_100%)] backdrop-blur-2xl"
         />
         <div className="cont mx-auto flex w-full items-center justify-between px-6 py-4">
           <div className="hidden items-center justify-center gap-8 text-[1.2rem] font-semibold sm:flex">
