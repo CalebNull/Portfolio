@@ -20,8 +20,22 @@ const links: NavLink[] = [
   { label: "Contact", href: "#contact" },
 ]
 
+const START_OFFSET = 40
+const SCROLL_THRESHOLD = 40
+
 export function SiteNav() {
   const [active, setActive] = useState(links[0].href)
+  const [isPinned, setIsPinned] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsPinned(window.scrollY > 10000)
+    }
+
+    handleScroll() // in case the page loads already scrolled
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   useEffect(() => {
     const sections = links
@@ -45,14 +59,14 @@ export function SiteNav() {
   return (
     <nav
       aria-label="Primary"
-      className="fixed top-0 z-50 flex w-full animate-fade-in-up items-center justify-center border-none px-6 py-8 [animate-delay:175ms] sm:px-12"
+      className="fixed inset-x-0 z-50 flex animate-fade-in-up items-center justify-between px-6 py-8 backdrop-blur-2xl transition-all duration-300 ease-out [animation-delay:150ms]"
     >
-      <div className="flex w-[75%] items-center justify-between">
+      <div className="mx-auto flex w-full max-w-5xl items-center justify-between px-6">
         <Link href="#home" className="text-lg font-bold tracking-tight">
           Caleb Null
         </Link>
 
-        <div className="hidden items-center gap-8 text-sm font-medium sm:flex">
+        <div className="hidden items-center gap-8 text-sm font-semibold sm:flex">
           {links.map((link) => {
             const isActive = link.href === active
             return (

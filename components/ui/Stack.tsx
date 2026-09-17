@@ -163,7 +163,7 @@ export default function Stack({
 
   return (
     <div
-      className="stack-container"
+      className="stack-container animate-fade-in-up [animation-delay:200ms]"
       onMouseEnter={() => pauseOnHover && setIsPaused(true)}
       onMouseLeave={() => pauseOnHover && setIsPaused(false)}
     >

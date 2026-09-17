@@ -23,7 +23,7 @@ export function Hero() {
         <Stack
           autoplay
           autoplayDelay={2200}
-          pauseOnHover={false}
+          pauseOnHover={true}
           sensitivity={200}
           sendToBackOnClick={true}
         />
@@ -33,10 +33,11 @@ export function Hero() {
         <h1 className="max-w-3xl animate-fade-in-up text-4xl font-bold tracking-tight [animation-delay:290ms] sm:text-5xl md:text-6xl">
           Hey there, I&apos;m <span className="text-primary">Caleb Null</span>
         </h1>
-        <p className="max-w-xl animate-fade-in-up text-balance text-muted-foreground [animation-delay:375ms] sm:text-lg">
-          <span className="font-semibold text-primary">Software Engineer</span>{" "}
-          passionate about building scalable applications and solving real-world
-          problems.
+        <p className="max-w-xl animate-fade-in-up font-semibold text-balance text-muted-foreground [animation-delay:375ms] sm:text-lg">
+          A passionate{" "}
+          <span className="font-bold text-primary">Software Engineer</span> with
+          a interest in backend systems, developer tooling, and clean
+          architecture.
         </p>
       </div>
 
