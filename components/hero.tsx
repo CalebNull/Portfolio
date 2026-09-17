@@ -1,4 +1,9 @@
-import { CaretDown, Code } from "@phosphor-icons/react/dist/ssr"
+import {
+  ArrowRightIcon,
+  CaretDown,
+  Code,
+  PaperPlaneTiltIcon,
+} from "@phosphor-icons/react/dist/ssr"
 import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
@@ -39,12 +44,21 @@ export function Hero() {
       <div className="flex animate-fade-in-up flex-wrap items-center justify-center gap-4 [animation-delay:450ms]">
         <Button
           size="lg"
-          render={<Link href="#projects">View Projects</Link>}
+          variant="outline"
+          render={
+            <Link href="#contact">
+              <PaperPlaneTiltIcon weight="bold" size={24} /> Get In Touch
+            </Link>
+          }
         />
         <Button
           size="lg"
-          variant="outline"
-          render={<Link href="#contact">Get In Touch</Link>}
+          render={
+            <Link href="#projects">
+              <ArrowRightIcon size={24} weight="bold" />
+              View Projects
+            </Link>
+          }
         />
       </div>
 
