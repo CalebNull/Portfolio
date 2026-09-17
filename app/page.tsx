@@ -4,7 +4,7 @@ import { Hero } from "@/components/hero"
 import { MouseBlurTracker } from "@/components/ui/mouse-blur-tracker"
 import Projects from "@/components/projects"
 import Resume from "@/components/resume"
-import { SiteNav } from "@/components/site-nav"
+import { SiteNav } from "@/components/ui/site-nav"
 import Skills from "@/components/skills"
 
 export default function Page() {

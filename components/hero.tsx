@@ -2,7 +2,8 @@ import { CaretDown, Code } from "@phosphor-icons/react/dist/ssr"
 import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
-import { OrbField } from "./orb-field"
+import { OrbField } from "./ui/orb-field"
+import Stack from "./ui/Stack"
 
 export function Hero() {
   return (
@@ -18,11 +19,14 @@ export function Hero() {
       </div>
 
       {/* add photos later */}
-      <div className="relative h-48 w-48 animate-fade-in-up [animation-delay:225ms] sm:h-56 sm:w-56">
-        <div className="absolute inset-0 translate-x-3 translate-y-3 rotate-6 rounded-2xl border border-border bg-secondary" />
-        <div className="absolute inset-0 flex items-center justify-center overflow-hidden rounded-2xl border border-border bg-card shadow-2xl">
-          <Code className="size-16 text-muted-foreground" weight="light" />
-        </div>
+      <div className="relative h-full w-full sm:h-56 sm:w-56">
+        <Stack
+          autoplay
+          autoplayDelay={2200}
+          pauseOnHover={false}
+          sensitivity={200}
+          sendToBackOnClick={true}
+        />
       </div>
 
       <div className="flex flex-col items-center gap-4">
