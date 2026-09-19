@@ -18,7 +18,6 @@ export function Hero() {
     >
       <OrbField />
 
-      {/* add photos later */}
       <div className="relative h-full w-full sm:h-56 sm:w-56">
         <Stack
           autoplay
@@ -34,10 +33,7 @@ export function Hero() {
           Hey there, I&apos;m <span className="text-primary">Caleb Null</span>
         </h1>
         <p className="max-w-xl animate-fade-in-up font-semibold text-balance text-muted-foreground [animation-delay:375ms] sm:text-lg">
-          A passionate{" "}
-          <span className="font-bold text-primary">Software Engineer</span> with
-          a interest in backend systems, developer tooling, and clean
-          architecture.
+          <span className="font-bold text-primary">Software Engineer</span>
         </p>
       </div>
 
