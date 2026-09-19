@@ -29,14 +29,18 @@ const SKILL_GROUPS: SkillGroup[] = [
   },
   {
     title: "Frameworks & Libraries",
-    skills: [],
+    skills: [
+      { label: "React", icon: <CodeIcon weight="duotone" /> },
+      { label: "NextJS", icon: <CodeIcon weight="duotone" /> },
+      { label: "Tailwind", icon: <CodeIcon weight="duotone" /> },
+    ],
   },
   {
     title: "Tools & Platforms",
     skills: [
       { label: "Git", icon: <CodeIcon weight="duotone" /> },
-      { label: "Git", icon: <CodeIcon weight="duotone" /> },
-      { label: "Git", icon: <CodeIcon weight="duotone" /> },
+      { label: "Bun", icon: <CodeIcon weight="duotone" /> },
+      { label: "Node", icon: <CodeIcon weight="duotone" /> },
     ],
   },
 ]
