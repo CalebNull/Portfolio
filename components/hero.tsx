@@ -45,6 +45,7 @@ export function Hero() {
         <Button
           size="lg"
           variant="outline"
+          nativeButton={false}
           render={
             <Link href="#contact">
               <PaperPlaneTiltIcon weight="bold" size={24} /> Get In Touch
@@ -53,6 +54,7 @@ export function Hero() {
         />
         <Button
           size="lg"
+          nativeButton={false}
           render={
             <Link href="#projects">
               <ArrowRightIcon size={24} weight="bold" />
@@ -63,7 +65,7 @@ export function Hero() {
       </div>
 
       <Link
-        href="#about"
+        href=""
         aria-label="Scroll to About section"
         className="absolute bottom-8 animate-bounce text-muted-foreground transition-colors hover:text-foreground"
       >

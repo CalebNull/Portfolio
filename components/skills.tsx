@@ -17,7 +17,12 @@ type SkillGroup = {
 const SKILL_GROUPS: SkillGroup[] = [
   {
     title: "Languages",
-    skills: [{ label: "TypeScript", icon: <CodeIcon weight="duotone" /> }],
+    skills: [
+      { label: "TypeScript", icon: <CodeIcon weight="duotone" /> },
+      { label: "JavaScript", icon: <CodeIcon weight="duotone" /> },
+      { label: "Python", icon: <CodeIcon weight="duotone" /> },
+      { label: "Java", icon: <CodeIcon weight="duotone" /> },
+    ],
   },
   {
     title: "Frameworks & Libraries",
@@ -55,11 +60,11 @@ export default function Skills() {
     <section
       id="skills"
       ref={sectionRef}
-      className="mx-auto max-w-5xl px-6 py-32"
+      className="mx-auto bg-[rgba(0,0,0,0.2)] px-6 py-32"
     >
       <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Skills</h2>
 
-      <div className="mt-12 flex flex-col gap-10">
+      <div className="mt-12 flex gap-10">
         {SKILL_GROUPS.map((group, groupIndex) => (
           <div
             key={group.title}
