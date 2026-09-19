@@ -33,7 +33,11 @@ const SKILL_GROUPS: SkillGroup[] = [
   },
   {
     title: "Tools & Platforms",
-    skills: [],
+    skills: [
+      { label: "Git", icon: <CodeIcon weight="duotone" /> },
+      { label: "Git", icon: <CodeIcon weight="duotone" /> },
+      { label: "Git", icon: <CodeIcon weight="duotone" /> },
+    ],
   },
 ]
 
