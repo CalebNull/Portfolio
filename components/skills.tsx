@@ -22,6 +22,9 @@ const SKILL_GROUPS: SkillGroup[] = [
       { label: "JavaScript", icon: <CodeIcon weight="duotone" /> },
       { label: "Python", icon: <CodeIcon weight="duotone" /> },
       { label: "Java", icon: <CodeIcon weight="duotone" /> },
+      { label: "C++", icon: <CodeIcon weight="duotone" /> },
+      { label: "C", icon: <CodeIcon weight="duotone" /> },
+      { label: "C#", icon: <CodeIcon weight="duotone" /> },
     ],
   },
   {
