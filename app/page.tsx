@@ -1,19 +1,33 @@
-import { Button } from "@/components/ui/button"
+import Nav from "@/components/ui/nav"
+import Hero from "@/components/hero"
+import Skills from "@/components/skills"
+import Projects from "@/components/projects"
+import Education from "@/components/education"
+import Contact from "@/components/contact"
+import Footer from "@/components/footer"
 
 export default function Page() {
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
-        </div>
-        <div className="font-mono text-xs text-muted-foreground">
-          (Press <kbd>d</kbd> to toggle dark mode)
-        </div>
+    <>
+      <a
+        href="#top"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:rounded-full focus:border focus:border-border focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:font-medium"
+      >
+        Skip to content
+      </a>
+
+      <Nav />
+
+      <div className="mx-auto max-w-3xl border-x border-border">
+        <main>
+          <Hero />
+          <Skills />
+          <Projects />
+          <Education />
+          <Contact />
+        </main>
+        <Footer />
       </div>
-    </div>
+    </>
   )
 }
