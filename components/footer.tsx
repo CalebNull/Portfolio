@@ -3,10 +3,7 @@ import { site, socials } from "@/lib/content"
 const Footer = () => {
   return (
     <footer className="border-t border-border">
-      <div
-        data-reveal-stagger
-        className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-8 md:px-10"
-      >
+      <div className="mx-auto flex w-full max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-8 md:px-10">
         <p className="font-mono text-xs tracking-wide text-muted-foreground">
           &copy; {new Date().getFullYear()} {site.name}
         </p>
