@@ -4,7 +4,7 @@ import { Section } from "@/components/section"
 import { projects, sectionLedes } from "@/lib/content"
 
 const linkClasses =
-  "inline-flex items-center gap-1.5 rounded-sm text-sm font-medium underline-offset-4 hover:underline focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
+  "group inline-flex items-center gap-1.5 rounded-sm text-sm font-medium underline-offset-4 hover:underline focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
 
 const Projects = () => {
   return (
@@ -15,7 +15,7 @@ const Projects = () => {
         {projects.map((project) => (
           <li key={project.name} className="py-7 first:pt-0 last:pb-0">
             <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-              <h3 className="font-heading text-base font-semibold tracking-tight">
+              <h3 className="font-heading text-lg font-semibold tracking-tight">
                 {project.name}
               </h3>
               {project.status ? (
@@ -62,7 +62,7 @@ const Projects = () => {
                       {" "}
                       of {project.name} (opens in a new tab)
                     </span>
-                    <ArrowUpRight className="size-4" />
+                    <ArrowUpRight className="size-4 transition-transform duration-200 ease-out group-hover:translate-x-px group-hover:-translate-y-px" />
                   </a>
                 ) : null}
               </div>

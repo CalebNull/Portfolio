@@ -7,35 +7,30 @@ import { site } from "@/lib/content"
 
 const Hero = () => {
   return (
-    <section id="top" className="px-6 pt-32 pb-16 md:px-10 md:pt-40 md:pb-24">
-      <div className="flex flex-col gap-8 md:flex-row md:items-center md:gap-12">
-        {/* Image first in the markup so the mobile stack reads photo-then-name;
-            on desktop it moves to the right of the text. */}
-        <div className="shrink-0 md:order-last">
-          {/* Statically imported so Next infers the intrinsic size and can
-              generate the blur placeholder, avoiding layout shift. The source
-              is 3:4, so a portrait frame uses it without cropping the sides. */}
+    <section id="top" className="px-6 pt-8 pb-16 md:px-10 md:pt-14 md:pb-24">
+      <div className="mx-auto grid w-full max-w-5xl gap-10 md:grid-cols-[1fr_auto] md:items-center md:gap-14">
+        <div className="md:order-last">
           <Image
             src={headshot}
             alt={`Portrait of ${site.name}`}
             placeholder="blur"
             priority
-            sizes="(min-width: 768px) 176px, 128px"
-            className="aspect-[3/4] w-32 rounded-lg object-cover ring-1 ring-border md:w-44"
+            sizes="(min-width: 768px) 208px, 144px"
+            className="aspect-[3/4] w-36 rounded-xl object-cover ring-1 ring-border md:w-52"
           />
         </div>
 
-        <div className="space-y-5">
-          <div className="space-y-2">
-            <p className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
+        <div className="space-y-6">
+          <div className="space-y-3">
+            <p className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">
               {site.role}
             </p>
-            <h1 className="font-heading text-4xl font-bold tracking-tight text-balance md:text-5xl">
+            <h1 className="font-heading text-4xl leading-[1.05] font-bold tracking-tight text-balance md:text-6xl">
               {site.name}
             </h1>
           </div>
 
-          <p className="max-w-prose text-pretty text-muted-foreground md:text-lg md:leading-relaxed">
+          <p className="max-w-prose text-base leading-relaxed text-pretty text-muted-foreground md:text-lg">
             {site.tagline}
           </p>
 

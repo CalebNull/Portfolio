@@ -10,7 +10,7 @@ const Skills = () => {
         {skillGroups.map((group) => (
           <div
             key={group.title}
-            className="grid gap-1.5 py-4 first:pt-0 last:pb-0 sm:grid-cols-[7.5rem_1fr] sm:gap-6"
+            className="grid gap-1.5 py-4 first:pt-0 last:pb-0 sm:grid-cols-[6.5rem_1fr] sm:gap-6"
           >
             <dt className="font-mono text-xs tracking-widest text-muted-foreground uppercase sm:pt-0.5">
               {group.title}

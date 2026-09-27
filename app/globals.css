@@ -55,7 +55,7 @@
   --accent: oklch(0.268 0.007 34.298);
   --accent-foreground: oklch(0.985 0.001 106.423);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
+  --border: oklch(1 0 0 / 14%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.553 0.013 58.071);
   --chart-1: oklch(0.869 0.005 56.366);
@@ -128,24 +128,21 @@
   [role="button"]:not(:disabled) {
     cursor: pointer;
   }
-  html {
-    @apply font-sans;
-    scroll-behavior: smooth;
-  }
-  /* Keep the fixed nav from covering a heading we just jumped to. */
   section[id] {
-    scroll-margin-top: 6rem;
+    scroll-margin-top: 5.5rem;
   }
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
     }
+    /* Keyframe animations are cut, but short state transitions (hover
+       underlines, colour changes) are left alone — they aren't the kind of
+       motion this preference is meant to suppress. */
     *,
     *::before,
     *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
     }
   }
 }
@@ -159,6 +156,8 @@ a {
   cursor: pointer;
 }
 
+/* Put this on the text itself (an inner span is fine) so the rule below
+   measures the label, not whatever padding its link carries. */
 .a-underline {
   display: inline-block;
   position: relative;
@@ -167,16 +166,19 @@ a {
 .a-underline::after {
   content: "";
   position: absolute;
-  width: 100%;
-  transform: scaleX(0);
+  inset-inline: 0;
+  bottom: -1px;
   height: 2px;
-  bottom: 0;
-  left: 0;
   background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: bottom center;
   transition: transform 0.15s ease-out;
 }
 
-.a-underline:hover::after {
+/* Hovering anywhere on the link counts, not only the text — otherwise the
+   padded hit area would feel dead. Keyboard focus gets it too. */
+.a-underline:hover::after,
+a:hover .a-underline::after,
+a:focus-visible .a-underline::after {
   transform: scaleX(1);
-  transform-origin: bottom center;
 }

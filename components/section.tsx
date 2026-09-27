@@ -4,7 +4,7 @@ type SectionProps = {
   id: string
   /** Names the section. Rendered as a small label, not a display heading. */
   title: string
-  /** Lede line that carries the section's meaning at display size. */
+  /** Supporting line under the label. */
   description?: string
   children: React.ReactNode
   className?: string
@@ -13,10 +13,9 @@ type SectionProps = {
 /**
  * Shared shell for every content section.
  *
- * The heading is deliberately set small and monospaced: the label identifies
- * the section while the lede beneath it does the typographic work. Keeps the
- * `h2` semantically correct without four competing display headings down the
- * page.
+ * The rule runs the full width of the page while the content stays in a
+ * centred column, so the page reads as structured rather than boxed. On large
+ * screens the label column sticks while its content scrolls past it.
  */
 function Section({
   id,
@@ -31,28 +30,33 @@ function Section({
     <section
       id={id}
       aria-labelledby={headingId}
-      className={cn(
-        "border-t border-border px-6 py-16 md:px-10 md:py-24",
-        className
-      )}
+      className={cn("border-t border-border", className)}
     >
-      <header className="mb-10 md:mb-12">
-        <div className="flex items-center gap-4">
-          <h2
-            id={headingId}
-            className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase"
-          >
-            {title}
-          </h2>
-          <span aria-hidden="true" className="h-px flex-1 bg-border" />
-        </div>
-        {description ? (
-          <p className="mt-5 max-w-prose text-lg font-medium tracking-tight text-balance md:text-xl">
-            {description}
-          </p>
-        ) : null}
-      </header>
-      {children}
+      <div className="mx-auto grid w-full max-w-5xl gap-8 px-6 py-16 md:px-10 md:py-24 lg:grid-cols-[13rem_1fr] lg:gap-16">
+        <header className="lg:sticky lg:top-24 lg:self-start">
+          <div className="flex items-center gap-3">
+            <h2
+              id={headingId}
+              className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase"
+            >
+              {title}
+            </h2>
+            {/* The rule only earns its place while the label sits above the
+                content, not beside it. */}
+            <span
+              aria-hidden="true"
+              className="h-px flex-1 bg-border lg:hidden"
+            />
+          </div>
+          {description ? (
+            <p className="mt-4 max-w-prose text-sm leading-relaxed text-pretty text-muted-foreground">
+              {description}
+            </p>
+          ) : null}
+        </header>
+
+        <div className="min-w-0">{children}</div>
+      </div>
     </section>
   )
 }

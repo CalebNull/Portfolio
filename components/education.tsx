@@ -15,7 +15,7 @@ const Education = () => {
             className="py-7 first:pt-0 last:pb-0"
           >
             <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-              <h3 className="font-heading text-base font-semibold tracking-tight">
+              <h3 className="font-heading text-lg font-semibold tracking-tight">
                 {entry.school}
               </h3>
               <span className="font-mono text-xs text-muted-foreground">

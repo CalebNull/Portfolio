@@ -5,6 +5,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils"
 import { site } from "@/lib/content"
+import { ReactLenis } from "lenis/react"
 
 const fontHeading = Nunito_Sans({
   subsets: ["latin"],
@@ -78,9 +79,6 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      // Next 16 no longer overrides `scroll-behavior` during navigation unless
-      // this attribute is present, which would make route changes animate a
-      // long smooth scroll instead of jumping to the top.
       data-scroll-behavior="smooth"
       className={cn(
         "antialiased",
@@ -90,7 +88,9 @@ export default function RootLayout({
       )}
     >
       <body className="font-sans">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ReactLenis root options={{ anchors: { offset: -88 } }}>
+          <ThemeProvider>{children}</ThemeProvider>
+        </ReactLenis>
       </body>
     </html>
   )

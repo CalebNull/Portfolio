@@ -42,8 +42,6 @@ function useActiveSection() {
           setActive(topmost.target.id)
         }
       },
-      // Ignore the area under the fixed nav, and only count a section once it
-      // reaches the upper part of the viewport.
       { rootMargin: "-96px 0px -55% 0px" }
     )
 
@@ -93,7 +91,7 @@ function Nav() {
     <nav
       ref={navRef}
       aria-label="Main"
-      className="fixed inset-x-0 top-4 z-50 mx-auto w-[calc(100%-2rem)] max-w-3xl"
+      className="sticky inset-x-0 top-2 z-50 mx-auto mt-10 w-[calc(100%-2rem)] max-w-5xl"
     >
       <div className="flex items-center justify-between gap-2 rounded-full border border-border bg-background/80 px-2 py-2 shadow-sm backdrop-blur-md sm:px-4">
         <Button
@@ -119,13 +117,13 @@ function Nav() {
                   href={link.href}
                   aria-current={isActive ? "true" : undefined}
                   className={cn(
-                    "a-underline rounded-full px-3 py-1.5 text-sm font-medium transition-colors focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none",
+                    "rounded-full px-3 py-1.5 text-sm font-medium transition-colors focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none",
                     isActive
                       ? "text-foreground"
                       : "text-muted-foreground hover:text-foreground"
                   )}
                 >
-                  {link.label}
+                  <span className="a-underline">{link.label}</span>
                 </a>
               </li>
             )
