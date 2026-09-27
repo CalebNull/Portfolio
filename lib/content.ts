@@ -13,14 +13,10 @@ export const site = {
     "I build fast, accessible web applications — mostly TypeScript, React, and Next.js.",
   // TODO: replace with the deployed URL. Used for metadata and the sitemap.
   url: "https://calebnull.com",
-  // TODO: your public contact address.
-  email: "you@example.com",
+  email: "calebnull88@outlook.com",
   // TODO: drop the real file at public/resume.pdf — this link 404s until you do.
   resume: "/resume.pdf",
-  location: "TODO: City, State",
-  // Optional status line in the hero. Off by default so the site doesn't
-  // claim anything you haven't said. Set a string to show it, e.g.
-  // "Open to new grad roles" or "Available for freelance".
+  location: "Lenexa, KS",
   availability: null as string | null,
 } as const
 
@@ -37,7 +33,7 @@ export const navLinks = [
   { label: "Education", href: "#education" },
 ] as const
 
-/** Lede line shown under each section label. */
+
 export const sectionLedes = {
   skills: "The tools I reach for most often.",
   projects: "A few things I've designed, built, and shipped.",
@@ -47,7 +43,7 @@ export const sectionLedes = {
 } as const
 
 /** Section ids the nav highlights as you scroll. */
-export const sectionIds = ["top", "skills", "projects", "education", "contact"]
+export const sectionIds = ["home", "skills", "projects", "education", "contact"]
 
 // TODO: adjust these groups to what you actually want to lead with.
 export const skillGroups = [
@@ -61,11 +57,11 @@ export const skillGroups = [
   },
   {
     title: "Tooling",
-    items: ["Git", "Docker", "Vitest", "Playwright", "Vercel", "Figma"],
+    items: ["Git", "Docker", "Vercel", "Figma"],
   },
   {
     title: "Data",
-    items: ["PostgreSQL", "Prisma", "Redis", "REST", "tRPC"],
+    items: ["PostgreSQL", "Redis", "REST"],
   },
 ] as const
 

@@ -10,23 +10,12 @@ const Contact = () => {
     <Section id="contact" title="Contact" description={sectionLedes.contact}>
       {/* Details read as a compact strip above the form so the fields get the
           full width of the content column. */}
-      <dl className="grid gap-5 border-b border-border pb-7 sm:grid-cols-3">
-        <div>
-          <dt className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-            Email
-          </dt>
-          <dd className="mt-1.5 text-sm">
-            <a href={`mailto:${site.email}`} className={linkClasses}>
-              {site.email}
-            </a>
-          </dd>
-        </div>
-
+      <dl className="flex flex-col gap-5 border-b border-border pb-7 sm:flex-row sm:flex-wrap sm:gap-x-16">
         <div>
           <dt className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
             Elsewhere
           </dt>
-          <dd className="mt-1.5 flex flex-col gap-1.5 text-sm">
+          <dd className="mt-1.5 flex flex-col items-start gap-1.5 text-sm">
             {socials.map((social) => (
               <a
                 key={social.label}

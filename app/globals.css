@@ -135,9 +135,6 @@
     html {
       scroll-behavior: auto;
     }
-    /* Keyframe animations are cut, but short state transitions (hover
-       underlines, colour changes) are left alone — they aren't the kind of
-       motion this preference is meant to suppress. */
     *,
     *::before,
     *::after {
@@ -156,8 +153,6 @@ a {
   cursor: pointer;
 }
 
-/* Put this on the text itself (an inner span is fine) so the rule below
-   measures the label, not whatever padding its link carries. */
 .a-underline {
   display: inline-block;
   position: relative;
