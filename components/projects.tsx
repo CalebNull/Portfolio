@@ -4,14 +4,14 @@ import { Section } from "@/components/section"
 import { projects, sectionLedes } from "@/lib/content"
 
 const linkClasses =
-  "group inline-flex items-center gap-1.5 rounded-sm text-sm font-medium underline-offset-4 hover:underline focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
+  "group inline-flex items-center gap-1.5 rounded-sm text-sm font-medium focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none"
 
 const Projects = () => {
   return (
     <Section id="projects" title="Projects" description={sectionLedes.projects}>
       {/* Divided rows instead of bordered cards: less chrome, and the eye can
           scan names down a single edge. */}
-      <ul className="divide-y divide-border">
+      <ul data-reveal-stagger className="divide-y divide-border">
         {projects.map((project) => (
           <li key={project.name} className="py-7 first:pt-0 last:pb-0">
             <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
@@ -43,7 +43,7 @@ const Projects = () => {
                     className={linkClasses}
                   >
                     <GithubLogo className="size-4" />
-                    Source
+                    <span className="a-underline">Source</span>
                     <span className="sr-only">
                       {" "}
                       for {project.name} (opens in a new tab)
@@ -57,7 +57,7 @@ const Projects = () => {
                     rel="noreferrer"
                     className={linkClasses}
                   >
-                    Live demo
+                    <span className="a-underline">Live demo</span>
                     <span className="sr-only">
                       {" "}
                       of {project.name} (opens in a new tab)

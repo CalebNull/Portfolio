@@ -27,12 +27,11 @@ export const socials = [
 ] as const
 
 export const navLinks = [
-  { label: "Home", href: "#top" },
+  { label: "Home", href: "#home" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
   { label: "Education", href: "#education" },
 ] as const
-
 
 export const sectionLedes = {
   skills: "The tools I reach for most often.",

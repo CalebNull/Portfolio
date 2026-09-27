@@ -47,7 +47,12 @@ function ContactForm() {
   }, [state])
 
   return (
-    <form ref={formRef} action={formAction} className="grid gap-5">
+    <form
+      ref={formRef}
+      action={formAction}
+      data-reveal-stagger
+      className="grid gap-5"
+    >
       <div>
         <label htmlFor="name" className={labelClasses}>
           Name

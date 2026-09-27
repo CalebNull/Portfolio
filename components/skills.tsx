@@ -1,15 +1,20 @@
 import { Section } from "@/components/section"
 import { sectionLedes, skillGroups } from "@/lib/content"
+import FadeContent from "@/components/ui/FadeContent"
+
+// No `playOnMount` here, unlike the hero: these rows sit below the fold and
+// should animate when they are scrolled to. Values are milliseconds.
+const FADE = { y: 24, duration: 900 } as const
 
 const Skills = () => {
   return (
     <Section id="skills" title="Skills" description={sectionLedes.skills}>
-      {/* Labelled rows rather than a cloud of chips — reads like a CV and
-          stays legible as the lists grow. */}
       <dl className="divide-y divide-border">
-        {skillGroups.map((group) => (
-          <div
+        {skillGroups.map((group, groupIndex) => (
+          <FadeContent
             key={group.title}
+            {...FADE}
+            delay={groupIndex * 80}
             className="grid gap-1.5 py-4 first:pt-0 last:pb-0 sm:grid-cols-[6.5rem_1fr] sm:gap-6"
           >
             <dt className="font-mono text-xs tracking-widest text-muted-foreground uppercase sm:pt-0.5">
@@ -29,7 +34,7 @@ const Skills = () => {
                 ))}
               </ul>
             </dd>
-          </div>
+          </FadeContent>
         ))}
       </dl>
     </Section>

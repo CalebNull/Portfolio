@@ -11,6 +11,7 @@ import {
 
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
+import FadeContent from "@/components/ui/FadeContent"
 import { cn } from "@/lib/utils"
 import { navLinks, sectionIds, site, socials } from "@/lib/content"
 
@@ -93,7 +94,16 @@ function Nav() {
       aria-label="Main"
       className="sticky inset-x-0 top-2 z-50 mx-auto mt-10 w-[calc(100%-2rem)] max-w-5xl"
     >
-      <div className="flex items-center justify-between gap-2 rounded-full border border-border bg-background/80 px-2 py-2 shadow-sm backdrop-blur-md sm:px-4">
+      {/* FadeContent goes *inside* the nav, wrapping the pill. Putting it
+          around <Nav /> would make it the sticky element's containing
+          block — and its transform a containing block too — which stops
+          sticky from working at all. */}
+      <FadeContent
+        playOnMount
+        y={16}
+        duration={1100}
+        className="flex items-center justify-between gap-2 rounded-full border border-border bg-background/80 px-2 py-2 shadow-sm backdrop-blur-md sm:px-4"
+      >
         <Button
           size="icon"
           variant="ghost"
@@ -183,7 +193,7 @@ function Nav() {
             Contact
           </Button>
         </div>
-      </div>
+      </FadeContent>
 
       {/* Mobile section links, collapsed into the pill above on small screens. */}
       {menuOpen ? (

@@ -80,6 +80,10 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning
       data-scroll-behavior="smooth"
+      // Development only: ignore the OS reduced-motion preference so the
+      // reveal animations are visible on localhost. Inlined at build time,
+      // so production output never carries it.
+      data-motion={process.env.NODE_ENV === "development" ? "force" : undefined}
       className={cn(
         "antialiased",
         fontSans.variable,
@@ -88,6 +92,11 @@ export default function RootLayout({
       )}
     >
       <body className="font-sans">
+        {/* Reveal targets start at opacity 0 for the observer to animate in.
+            Without JS there is no observer, so un-hide them outright. */}
+        <noscript>
+          <style>{`[data-reveal],[data-reveal-stagger]>*{opacity:1!important;transform:none!important}`}</style>
+        </noscript>
         <ReactLenis root options={{ anchors: { offset: -88 } }}>
           <ThemeProvider>{children}</ThemeProvider>
         </ReactLenis>

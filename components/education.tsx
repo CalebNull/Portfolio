@@ -8,7 +8,7 @@ const Education = () => {
       title="Education"
       description={sectionLedes.education}
     >
-      <ul className="divide-y divide-border">
+      <ul data-reveal-stagger className="divide-y divide-border">
         {education.map((entry) => (
           <li
             key={`${entry.school}-${entry.credential}`}

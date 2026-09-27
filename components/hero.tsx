@@ -3,13 +3,19 @@ import { ArrowUpRight, ReadCvLogo } from "@phosphor-icons/react/dist/ssr"
 
 import headshot from "@/public/headshot.jpg"
 import { Button } from "@/components/ui/button"
+import FadeContent from "@/components/ui/FadeContent"
 import { site } from "@/lib/content"
+
+const FADE = { playOnMount: true, y: 36, duration: 1100 } as const
 
 const Hero = () => {
   return (
-    <section id="top" className="px-6 pt-8 pb-16 md:px-10 md:pt-14 md:pb-24">
-      <div className="mx-auto grid w-full max-w-5xl gap-10 md:grid-cols-[1fr_auto] md:items-center md:gap-14">
-        <div className="md:order-last">
+    <section
+      id="home"
+      className="flex min-h-[calc(100svh-10rem)] items-center px-6 py-12 md:px-10 md:py-16"
+    >
+      <div className="mx-auto grid w-full max-w-5xl gap-12 md:grid-cols-[1fr_auto] md:items-center md:gap-16">
+        <FadeContent {...FADE} delay={270} className="md:order-last">
           <Image
             src={headshot}
             alt={`Portrait of ${site.name}`}
@@ -18,23 +24,29 @@ const Hero = () => {
             sizes="(min-width: 768px) 208px, 144px"
             className="aspect-[3/4] w-36 rounded-xl object-cover ring-1 ring-border md:w-52"
           />
-        </div>
+        </FadeContent>
 
-        <div className="space-y-6">
-          <div className="space-y-3">
+        <div>
+          <FadeContent {...FADE} delay={120} className="space-y-3">
             <p className="font-mono text-xs tracking-[0.2em] text-muted-foreground uppercase">
               {site.role}
             </p>
             <h1 className="font-heading text-4xl leading-[1.05] font-bold tracking-tight text-balance md:text-6xl">
               {site.name}
             </h1>
-          </div>
+          </FadeContent>
 
-          <p className="max-w-prose text-base leading-relaxed text-pretty text-muted-foreground md:text-lg">
-            {site.tagline}
-          </p>
+          <FadeContent {...FADE} delay={200} className="mt-6 md:mt-7">
+            <p className="max-w-prose text-base leading-relaxed text-pretty text-muted-foreground md:text-lg">
+              {site.tagline}
+            </p>
+          </FadeContent>
 
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted-foreground">
+          <FadeContent
+            {...FADE}
+            delay={340}
+            className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted-foreground"
+          >
             <span>{site.location}</span>
             {site.availability ? (
               <>
@@ -51,9 +63,13 @@ const Hero = () => {
                 </span>
               </>
             ) : null}
-          </div>
+          </FadeContent>
 
-          <div className="flex flex-wrap items-center gap-3 pt-1">
+          <FadeContent
+            {...FADE}
+            delay={430}
+            className="mt-8 flex flex-wrap items-center gap-3 md:mt-10"
+          >
             <Button
               render={<a href="#projects" />}
               nativeButton={false}
@@ -71,7 +87,7 @@ const Hero = () => {
               <ReadCvLogo className="size-4" />
               Resume
             </Button>
-          </div>
+          </FadeContent>
         </div>
       </div>
     </section>

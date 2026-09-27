@@ -33,7 +33,10 @@ function Section({
       className={cn("border-t border-border", className)}
     >
       <div className="mx-auto grid w-full max-w-5xl gap-8 px-6 py-16 md:px-10 md:py-24 lg:grid-cols-[13rem_1fr] lg:gap-16">
-        <header className="lg:sticky lg:top-24 lg:self-start">
+        <header
+          data-reveal-stagger
+          className="lg:sticky lg:top-24 lg:self-start"
+        >
           <div className="flex items-center gap-3">
             <h2
               id={headingId}

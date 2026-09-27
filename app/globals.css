@@ -177,3 +177,114 @@ a:hover .a-underline::after,
 a:focus-visible .a-underline::after {
   transform: scaleX(1);
 }
+
+/* ---------------------------------------------------------------------------
+   Motion
+   --------------------------------------------------------------------------- */
+
+/* Hero settles on load. A keyframe with `both` fill is used rather than a
+   scroll observer so the first screenful never depends on JS — and because the
+   reduced-motion rule below collapses the duration, it lands on its final
+   state immediately for anyone who asked for less motion. */
+:root {
+  /* Long, gentle deceleration with no overshoot. `ease-out` front-loads most
+     of its movement, which is what made the reveals feel abrupt. */
+  --ease-reveal: cubic-bezier(0.22, 1, 0.36, 1);
+  /* Spreads movement across the whole duration. An exponential curve here
+     finished the slide in the first ~200ms and spent the rest settling
+     sub-pixel, which read as a fade with no movement at all. */
+  --ease-reveal-load: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes reveal-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes reveal-slide {
+  from {
+    transform: translateY(36px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+/* Two animations rather than one multi-stop keyframe, so each gets its own
+   duration outright: the fade lands at 0.65s while the slide keeps travelling
+   to 1.1s. Nothing sits half-transparent, and the movement stays visible.
+   An inline animation-delay applies to both. */
+.reveal-up {
+  animation:
+    reveal-fade 0.65s var(--ease-reveal-load) both,
+    reveal-slide 1.1s var(--ease-reveal-load) both;
+}
+
+/* Scroll reveal. `is-revealed` is added by the observer in
+   components/reveal.tsx when the element first enters the viewport.
+   Transitions rather than keyframes, so the delays below compose cleanly. */
+/* Nothing is hidden by default. `is-armed` is added by the observer in
+   components/reveal.tsx before the first paint, so if that script never runs
+   — a hydration error, a bundle that fails to load — the page simply shows
+   without animating, instead of staying blank forever. */
+[data-reveal],
+[data-reveal-stagger] > * {
+  transition:
+    opacity 0.7s var(--ease-reveal),
+    transform 0.7s var(--ease-reveal);
+}
+
+[data-reveal].is-armed,
+[data-reveal-stagger].is-armed > * {
+  opacity: 0;
+  transform: translateY(12px);
+}
+
+/* Reveal simply disarms; the base rule above is already the settled state. */
+[data-reveal].is-revealed,
+[data-reveal-stagger].is-revealed > * {
+  opacity: 1;
+  transform: none;
+}
+
+/* Rows settle in sequence instead of all at once. */
+[data-reveal-stagger].is-revealed > *:nth-child(2) {
+  transition-delay: 125ms;
+}
+[data-reveal-stagger].is-revealed > *:nth-child(3) {
+  transition-delay: 150ms;
+}
+[data-reveal-stagger].is-revealed > *:nth-child(4) {
+  transition-delay: 175ms;
+}
+[data-reveal-stagger].is-revealed > *:nth-child(5) {
+  transition-delay: 200ms;
+}
+[data-reveal-stagger].is-revealed > *:nth-child(6) {
+  transition-delay: 225ms;
+}
+[data-reveal-stagger].is-revealed > *:nth-child(n + 7) {
+  transition-delay: 250ms;
+}
+
+/* Nobody who asked for reduced motion gets moved, and nothing stays hidden
+   waiting on an observer that will never animate it. */
+@media (prefers-reduced-motion: reduce) {
+  /* `data-motion="force"` on <html> opts out of this guard. It is set only in
+     development (see app/layout.tsx) so the animations can be seen on
+     localhost without changing OS accessibility settings. Production builds
+     never set it, so real visitors who asked for reduced motion still get
+     static content. */
+  html:not([data-motion="force"]) .reveal-up,
+  html:not([data-motion="force"]) [data-reveal],
+  html:not([data-motion="force"]) [data-reveal-stagger] > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
