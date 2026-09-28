@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next"
-import { Geist_Mono, IBM_Plex_Sans, Nunito_Sans } from "next/font/google"
+import { Geist, Geist_Mono } from "next/font/google"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -7,12 +7,12 @@ import { cn } from "@/lib/utils"
 import { site } from "@/lib/content"
 import { ReactLenis } from "lenis/react"
 
-const fontHeading = Nunito_Sans({
+const fontHeading = Geist({
   subsets: ["latin"],
   variable: "--font-heading",
 })
 
-const fontSans = IBM_Plex_Sans({
+const fontSans = Geist({
   subsets: ["latin"],
   variable: "--font-sans",
 })
@@ -80,9 +80,6 @@ export default function RootLayout({
       lang="en"
       suppressHydrationWarning
       data-scroll-behavior="smooth"
-      // Development only: ignore the OS reduced-motion preference so the
-      // reveal animations are visible on localhost. Inlined at build time,
-      // so production output never carries it.
       data-motion={process.env.NODE_ENV === "development" ? "force" : undefined}
       className={cn(
         "antialiased",
@@ -92,12 +89,16 @@ export default function RootLayout({
       )}
     >
       <body className="font-sans">
-        {/* Reveal targets start at opacity 0 for the observer to animate in.
-            Without JS there is no observer, so un-hide them outright. */}
         <noscript>
           <style>{`[data-reveal],[data-reveal-stagger]>*{opacity:1!important;transform:none!important}`}</style>
         </noscript>
-        <ReactLenis root options={{ anchors: { offset: -88 } }}>
+        <ReactLenis
+          root
+          options={{
+            anchors: { offset: -88 },
+            respectReducedMotion: process.env.NODE_ENV !== "development",
+          }}
+        >
           <ThemeProvider>{children}</ThemeProvider>
         </ReactLenis>
       </body>

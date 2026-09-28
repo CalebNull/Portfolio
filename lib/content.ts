@@ -8,22 +8,20 @@
 export const site = {
   name: "Caleb Null",
   role: "Software Engineer",
-  // TODO: your real one-liner. Keep it to a sentence or two.
   tagline:
-    "I build fast, accessible web applications — mostly TypeScript, React, and Next.js.",
+    "I design and build backend systems that stay fast, reliable, and easy to reason about as they grow, from API design to data modeling and infrastructure.",
   // TODO: replace with the deployed URL. Used for metadata and the sitemap.
   url: "https://calebnull.com",
   email: "calebnull88@outlook.com",
   // TODO: drop the real file at public/resume.pdf — this link 404s until you do.
-  resume: "/resume.pdf",
+  resume: "/Caleb Null.pdf",
   location: "Lenexa, KS",
   availability: null as string | null,
 } as const
 
 export const socials = [
   { label: "GitHub", href: "https://github.com/CalebNull" },
-  // TODO: replace with your real LinkedIn handle.
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/calebnull" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/caleb-null-2a0997226/" },
 ] as const
 
 export const navLinks = [
@@ -36,27 +34,25 @@ export const navLinks = [
 export const sectionLedes = {
   skills: "The tools I reach for most often.",
   projects: "A few things I've designed, built, and shipped.",
-  education: "Where I trained, and what I focused on.",
+  education: "Where I trained, and the certifications I've earned along the way.",
   contact:
     "Have a role, a project, or a question? Send a message and I'll get back to you.",
 } as const
 
-/** Section ids the nav highlights as you scroll. */
 export const sectionIds = ["home", "skills", "projects", "education", "contact"]
 
-// TODO: adjust these groups to what you actually want to lead with.
 export const skillGroups = [
   {
     title: "Languages",
-    items: ["TypeScript", "JavaScript", "Python", "SQL", "HTML", "CSS"],
+    items: ["TypeScript", "JavaScript", "Python", "SQL", "Kotlin", "CSS", "Java"],
   },
   {
     title: "Frameworks",
-    items: ["React", "Next.js", "Node.js", "Express", "Tailwind CSS"],
+    items: ["React", "Next.js", "Node.js", "Tailwind CSS"],
   },
   {
     title: "Tooling",
-    items: ["Git", "Docker", "Vercel", "Figma"],
+    items: ["Git", "Docker", "Vercel", "Bun", "VS Code"],
   },
   {
     title: "Data",
@@ -70,37 +66,18 @@ export type Project = {
   stack: readonly string[]
   repo?: string
   demo?: string
-  /** Shown as a small label on the card, e.g. "2025" or "In progress". */
   status?: string
 }
 
-// TODO: swap in two to four real projects. Quality over quantity — each one
-// should say what it does and what you actually built.
 export const projects: readonly Project[] = [
   {
-    name: "TODO: Project One",
+    name: "GitHub Wrapped",
     description:
-      "One or two sentences on the problem it solves and the part you built. Mention scale or results if you have them.",
-    stack: ["Next.js", "TypeScript", "PostgreSQL"],
-    repo: "https://github.com/CalebNull",
-    demo: "https://example.com",
-    status: "2025",
-  },
-  {
-    name: "TODO: Project Two",
-    description:
-      "One or two sentences on the problem it solves and the part you built. Mention scale or results if you have them.",
-    stack: ["React", "Node.js", "Tailwind CSS"],
-    repo: "https://github.com/CalebNull",
-    status: "2025",
-  },
-  {
-    name: "TODO: Project Three",
-    description:
-      "One or two sentences on the problem it solves and the part you built. Mention scale or results if you have them.",
-    stack: ["Python", "FastAPI", "Redis"],
-    repo: "https://github.com/CalebNull",
-    status: "In progress",
+      "Type any GitHub username and get a swipeable recap of their last year — total contributions, longest streak, busiest month, top languages, a full contribution heatmap, and a 'developer persona' — ending in a share card built for link previews.",
+    stack: ["Next.js", "TypeScript", "Redis", "Tailwind"],
+    repo: "https://github.com/CalebNull/Github-Wrapped",
+    demo: "https://github-wrapped-sigma.vercel.app/",
+    status: "2026",
   },
 ] as const
 
@@ -111,15 +88,41 @@ export type EducationEntry = {
   details?: readonly string[]
 }
 
-// TODO: your real education history.
 export const education: readonly EducationEntry[] = [
   {
-    school: "TODO: University Name",
-    credential: "B.S. in Computer Science",
-    dates: "2021 — 2025",
+    school: "Western Governors University",
+    credential: "B.S. in Software Engineering",
+    dates: "2023 — 2026",
     details: [
       "Relevant coursework: Data Structures, Algorithms, Databases, Operating Systems.",
-      "TODO: honors, GPA, or a leadership role, if you want them here.",
     ],
   },
+] as const
+
+export type Certification = {
+  name: string
+  issuer: string
+  date: string
+  url?: string
+}
+
+export const certifications: readonly Certification[] = [
+  {
+    name: "AWS Certified Cloud Practitioner",
+    issuer: "Amazon Web Services Training and Certification",
+    date: "Mar 2025 - Mar 2028",
+    url: "https://cp.certmetrics.com/amazon/en/public/verify/credential/2d9a864a2664410fbb5210b9dd71bb75",
+  },
+  {
+    name: "CompTIA Project+ Certification",
+    issuer: "CompTIA",
+    date: "Sep 2024",
+    url: "https://www.credly.com/badges/35b692ed-cf2e-474d-83f3-3c72811a06b0/linked_in_profile",
+  },
+  {
+    name: "Google IT Support Specialization",
+    issuer: "Coursera",
+    date: "Feb 2023",
+    url: "https://www.coursera.org/account/accomplishments/specialization/certificate/QS85S3VGS8LD",
+  }
 ] as const

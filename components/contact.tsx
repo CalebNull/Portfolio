@@ -8,8 +8,6 @@ const linkClasses =
 const Contact = () => {
   return (
     <Section id="contact" title="Contact" description={sectionLedes.contact}>
-      {/* Details read as a compact strip above the form so the fields get the
-          full width of the content column. */}
       <dl
         data-reveal-stagger
         className="flex flex-col gap-5 border-b border-border pb-7 sm:flex-row sm:flex-wrap sm:gap-x-16"
