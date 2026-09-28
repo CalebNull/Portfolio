@@ -6,6 +6,7 @@ import Education from "@/components/education"
 import Contact from "@/components/contact"
 import Footer from "@/components/footer"
 import { RevealOnScroll } from "@/components/reveal"
+import { Stars } from "@/components/ui/stars"
 
 export default function Page() {
   return (
@@ -16,6 +17,8 @@ export default function Page() {
       >
         Skip to content
       </a>
+
+      <Stars />
 
       <Nav />
 
