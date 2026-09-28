@@ -116,7 +116,6 @@ function Stars() {
     }
 
     function wrap(s: Stars) {
-      // Wrap just past the edges so they drift off and back on unseen.
       const m = s.size * 2
       if (s.x < -m) s.x = width + m
       else if (s.x > width + m) s.x = -m
@@ -136,45 +135,34 @@ function Stars() {
       const scrolled = scrollY - lastScroll
       lastScroll = scrollY
 
-      for (const s of stars) {
-        s.angle += (Math.random() - 0.5) * 2.4 * dt
-        s.x += Math.cos(s.angle) * s.speed * dt
-        s.y += Math.sin(s.angle) * s.speed * dt
-        s.y -= scrolled * SCROLL_FOLLOW * s.depth
-        wrap(s)
+      if (!reducedMotion) {
+        for (const s of stars) {
+          s.angle += (Math.random() - 0.5) * 2.4 * dt
+          s.x += Math.cos(s.angle) * s.speed * dt
+          s.y += Math.sin(s.angle) * s.speed * dt
+          s.y -= scrolled * SCROLL_FOLLOW * s.depth
+          wrap(s)
+        }
       }
 
       draw(now)
       frame = requestAnimationFrame(tick)
     }
 
-    const themeObserver = new MutationObserver(() => {
-      applyTheme()
-      if (reducedMotion) draw(performance.now())
-    })
+    const themeObserver = new MutationObserver(applyTheme)
     themeObserver.observe(root, {
       attributes: true,
       attributeFilter: ["class"],
     })
 
-    function onResize() {
-      resize()
-      if (reducedMotion) draw(performance.now())
-    }
-
     applyTheme()
     resize()
-    window.addEventListener("resize", onResize)
-
-    if (reducedMotion) {
-      draw(performance.now())
-    } else {
-      frame = requestAnimationFrame(tick)
-    }
+    window.addEventListener("resize", resize)
+    frame = requestAnimationFrame(tick)
 
     return () => {
       cancelAnimationFrame(frame)
-      window.removeEventListener("resize", onResize)
+      window.removeEventListener("resize", resize)
       themeObserver.disconnect()
     }
   }, [])

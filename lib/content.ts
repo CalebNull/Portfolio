@@ -5,8 +5,7 @@ export const site = {
   role: "Software Engineer",
   tagline:
     "I design and build backend systems that stay fast, reliable, and easy to reason about as they grow, from API design to data modeling and infrastructure.",
-  // TODO: replace with the deployed URL. Used for metadata and the sitemap.
-  url: "https://calebnull.com",
+  url: "https://calebnull.vercel.app/",
   email: "calebnull88@outlook.com",
   resume: "/Caleb Null.pdf",
   location: "Lenexa, KS",

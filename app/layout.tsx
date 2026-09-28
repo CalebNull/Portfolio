@@ -96,7 +96,7 @@ export default function RootLayout({
           root
           options={{
             anchors: { offset: -88 },
-            respectReducedMotion: process.env.NODE_ENV !== "development",
+            respectReducedMotion: false,
           }}
         >
           <ThemeProvider>{children}</ThemeProvider>
