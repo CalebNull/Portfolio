@@ -64,9 +64,6 @@ function Stars() {
     }
 
     const root = document.documentElement
-    const reducedMotion =
-      root.dataset.motion !== "force" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
 
     let width = 0
     let height = 0
@@ -135,14 +132,12 @@ function Stars() {
       const scrolled = scrollY - lastScroll
       lastScroll = scrollY
 
-      if (!reducedMotion) {
-        for (const s of stars) {
-          s.angle += (Math.random() - 0.5) * 2.4 * dt
-          s.x += Math.cos(s.angle) * s.speed * dt
-          s.y += Math.sin(s.angle) * s.speed * dt
-          s.y -= scrolled * SCROLL_FOLLOW * s.depth
-          wrap(s)
-        }
+      for (const s of stars) {
+        s.angle += (Math.random() - 0.5) * 2.4 * dt
+        s.x += Math.cos(s.angle) * s.speed * dt
+        s.y += Math.sin(s.angle) * s.speed * dt
+        s.y -= scrolled * SCROLL_FOLLOW * s.depth
+        wrap(s)
       }
 
       draw(now)
