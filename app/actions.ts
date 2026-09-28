@@ -1,5 +1,6 @@
 "use server"
 
+import { site } from "@/lib/content"
 import {
   CONTACT_MAX_LENGTHS as MAX_LENGTHS,
   CONTACT_MIN_MESSAGE_LENGTH,
@@ -31,7 +32,7 @@ export async function submitContact(
   if (readField(formData, "company") !== "") {
     return {
       status: "success",
-      message: "Thanks — your message is on its way.",
+      message: "Your message is on its way.",
     }
   }
 
@@ -66,34 +67,55 @@ export async function submitContact(
     }
   }
 
-  // TODO: actually deliver the message. This currently only logs on the
-  // server, so submissions are validated but go nowhere.
-  //
-  // Pick a provider (Resend, Postmark, SendGrid, …), put the key in
-  // `.env.local` as CONTACT_EMAIL_API_KEY, and send from here. Example with
-  // Resend:
-  //
-  //   const res = await fetch("https://api.resend.com/emails", {
-  //     method: "POST",
-  //     headers: {
-  //       Authorization: `Bearer ${process.env.CONTACT_EMAIL_API_KEY}`,
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({
-  //       from: "portfolio@yourdomain.com",
-  //       to: site.email,
-  //       reply_to: values.email,
-  //       subject: `Portfolio message from ${values.name}`,
-  //       text: values.message,
-  //     }),
-  //   })
-  //   if (!res.ok) {
-  //     return {
-  //       status: "error",
-  //       message: "Something went wrong sending that. Please email me directly.",
-  //       values,
-  //     }
-  //   }
+  const apiKey = process.env.CONTACT_EMAIL_API_KEY
+
+  if (!apiKey) {
+    console.error("[contact] CONTACT_EMAIL_API_KEY is not set")
+    return {
+      status: "error",
+      message: `The form isn't set up yet. Please email me at ${site.email}.`,
+      values,
+    }
+  }
+
+  try {
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: "Portfolio <onboarding@resend.dev>",
+        to: site.email,
+        reply_to: values.email,
+        subject: `Portfolio message from ${values.name}`,
+        text: `From: ${values.name} <${values.email}>\n\n${values.message}`,
+      }),
+    })
+
+    if (!res.ok) {
+      console.error("[contact] Resend error:", res.status, await res.text())
+      return {
+        status: "error",
+        message: `Something went wrong sending that. Please email me at ${site.email}.`,
+        values,
+      }
+    }
+  } catch (error) {
+    console.error("[contact] network error:", error)
+    return {
+      status: "error",
+      message: `Something went wrong sending that. Please email me at ${site.email}.`,
+      values,
+    }
+  }
+
+  return {
+    status: "success",
+    message: "Thanks, your message is on its way!",
+  }
+
   //
   // Until that exists, fail loudly in production rather than telling someone
   // their message was sent when it was not.
