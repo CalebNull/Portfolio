@@ -1,9 +1,4 @@
-/**
- * Every piece of copy on the site lives here.
- *
- * Anything marked TODO is placeholder text — edit it in this file and the
- * whole page updates. You should not need to touch any JSX to change content.
- */
+
 
 export const site = {
   name: "Caleb Null",
@@ -13,7 +8,6 @@ export const site = {
   // TODO: replace with the deployed URL. Used for metadata and the sitemap.
   url: "https://calebnull.com",
   email: "calebnull88@outlook.com",
-  // TODO: drop the real file at public/resume.pdf — this link 404s until you do.
   resume: "/Caleb Null.pdf",
   location: "Lenexa, KS",
   availability: null as string | null,
@@ -73,10 +67,18 @@ export const projects: readonly Project[] = [
   {
     name: "GitHub Wrapped",
     description:
-      "Type any GitHub username and get a swipeable recap of their last year — total contributions, longest streak, busiest month, top languages, a full contribution heatmap, and a 'developer persona' — ending in a share card built for link previews.",
+      "Type any GitHub username and get a swipeable recap of their last year, such as their total contributions, longest streak, busiest month, top languages, a full contribution heatmap, and a 'developer persona', ending in a share card built for link previews.",
     stack: ["Next.js", "TypeScript", "Redis", "Tailwind"],
     repo: "https://github.com/CalebNull/Github-Wrapped",
     demo: "https://github-wrapped-sigma.vercel.app/",
+    status: "2026",
+  },
+  {
+    name: "Corporate Expense Tracker",
+    description:
+      "Android app for submitting, approving and reimbursing employee expenses with role-based access, backed by a serverless AWS API of 10 tested Lambda functions that handle budgets, audit trails and spending reports.",
+    stack: ["Kotlin", "Jetpack Compose", "Python", "AWS Lambda", "API Gateway", "DynamoDB", "Retrofit", "pytest"],
+    repo: "https://github.com/CalebNull/CorporateExpenseTracker",
     status: "2026",
   },
 ] as const

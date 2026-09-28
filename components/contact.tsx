@@ -14,7 +14,7 @@ const Contact = () => {
       >
         <div>
           <dt className="font-mono text-xs tracking-widest text-muted-foreground uppercase">
-            Elsewhere
+            Links
           </dt>
           <dd className="mt-1.5 flex flex-col items-start gap-1.5 text-sm">
             {socials.map((social) => (
