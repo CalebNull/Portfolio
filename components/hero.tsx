@@ -14,7 +14,7 @@ const Hero = () => {
       id="home"
       className="flex min-h-[calc(100svh-10rem)] items-center px-6 py-12 md:px-10 md:py-16"
     >
-      <div className="mx-auto grid w-full max-w-5xl gap-12 md:grid-cols-[1fr_auto] md:items-center md:gap-16">
+      <div className="mx-auto grid w-full max-w-5xl gap-12 justify-items-center text-center md:grid-cols-[1fr_auto] md:items-center md:justify-items-stretch md:gap-16 md:text-left">
         <FadeContent {...FADE} delay={270} className="md:order-last">
           <Image
             src={headshot}
@@ -37,7 +37,7 @@ const Hero = () => {
           </FadeContent>
 
           <FadeContent {...FADE} delay={200} className="mt-6 md:mt-7">
-            <p className="max-w-prose text-base leading-relaxed text-pretty text-muted-foreground md:text-lg">
+            <p className="mx-auto max-w-prose text-base leading-relaxed text-pretty text-muted-foreground md:text-lg md:mx-0">
               {site.tagline}
             </p>
           </FadeContent>
@@ -45,7 +45,7 @@ const Hero = () => {
           <FadeContent
             {...FADE}
             delay={340}
-            className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted-foreground"
+            className="mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-sm text-muted-foreground md:justify-start"
           >
             <span>{site.location}</span>
             {site.availability ? (
@@ -68,7 +68,7 @@ const Hero = () => {
           <FadeContent
             {...FADE}
             delay={430}
-            className="mt-8 flex flex-wrap items-center gap-3 md:mt-10"
+            className="mt-8 flex flex-wrap items-center justify-center gap-3 md:mt-10 md:justify-start"
           >
             <Button
               render={<a href="#projects" />}
