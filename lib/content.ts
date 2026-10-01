@@ -80,6 +80,14 @@ export const projects: readonly Project[] = [
     repo: "https://github.com/CalebNull/CorporateExpenseTracker",
     status: "2026",
   },
+  {
+    name: "KC Transit Analyzer",
+    description:
+      "Android app for analyzing Kansas City transit data, providing insights on routes, schedules, and ridership patterns.",
+    stack: ["Next.js", "MapLibre", "Node.js", "TypeScript", "PostgreSQL", "Docker", "KCATA GTFS"],
+    repo: "https://github.com/CalebNull/kc-transit",
+    status: "In Progress",
+  },
 ] as const
 
 export type EducationEntry = {
